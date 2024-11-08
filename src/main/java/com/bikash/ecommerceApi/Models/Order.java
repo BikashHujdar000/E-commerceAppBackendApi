@@ -11,12 +11,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@Entity
+@Entity()
+@Table(name =" orders")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
+
 public class Order {
 
 
@@ -40,6 +42,8 @@ public class Order {
     private Address shippingAddress;
 
     @Embedded
+
+    @AttributeOverride(name = "paymentStatus", column = @Column(name = "payment_status_details"))
     private PaymentDetails paymentDetails = new PaymentDetails();
 
 
